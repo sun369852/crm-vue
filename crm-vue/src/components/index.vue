@@ -2,7 +2,9 @@
 	<el-container style="height:100%">
 		<m-aside></m-aside>
 		<el-container>
-			<el-header>header</el-header>
+			<el-header>
+				<m-header></m-header>
+			</el-header>
 			<el-main>
 				<router-view></router-view>
 			</el-main>
@@ -12,10 +14,12 @@
 
 <script>
 	import mAside from '@/components/mAside'
+	import mHeader from '@/components/mHeader'
 	export default {
 	  name: 'main',
 	  components: {
-	  	mAside
+	  	mAside,
+	  	mHeader
 	  }
 	}
 </script>

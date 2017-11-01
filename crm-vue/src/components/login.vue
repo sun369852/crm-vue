@@ -16,9 +16,9 @@
 				<!--<div><div class="forget-password">忘记密码？</div></div>-->
 				<div class="clearfix box">
 					<el-checkbox v-model="checked" class="remember-pass">记住密码</el-checkbox>
-					<el-form-item>
+					<!--<el-form-item>-->
 						<el-button type="primary" class="login-btn" @click="haveUser">登录</el-button>
-					</el-form-item>
+					<!--</el-form-item>-->
 				</div>
 				
 			</el-form>
@@ -66,9 +66,13 @@
 	  			return item.username == this.login.username;
 	  		})
 	  		if (user.length == 0) {
+	  			this.usernameInfo = "用户名不存在"
+	  			this.passwordInfo = ""
 	  			this.haveAccount = false;
 	  			return
 	  		} else if(user[0].password != this.login.password ){
+	  			this.usernameInfo = ""
+	  			this.passwordInfo = "密码错误"
 	  			this.haveAccount = false;
 	  			return
 	  		}
@@ -78,7 +82,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.wrap {
 		width: 100%;
 		height: 100%;

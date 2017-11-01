@@ -1,6 +1,9 @@
 <template>
 	<el-aside width="150px">
         <el-col :span="24">
+        	<router-link :to="{name:'index'}">
+        		<div class="logo"></div>
+        	</router-link>
             <el-menu
                 default-active="1"
                 class="el-menu-vertical-demo"
@@ -25,6 +28,9 @@
 </template>
 
 <script>
+	export default {
+	  name: 'mAside'
+	}
 </script>
 
 <style>
@@ -35,5 +41,10 @@
 		box-sizing: border-box;
         height: 100%;
         background: #545c64;
+    }
+    .logo {
+    	width: 100%;
+    	height: 80px;
+    	background-color: green;
     }
 </style>

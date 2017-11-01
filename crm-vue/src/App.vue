@@ -6,12 +6,8 @@
 
 <script>
 	import '@/assets/reset.css'
-	import login from '@/components/login'
 	export default {
 	  name: 'app',
-	  components:{
-	  	login
-	  }
 	}
 </script>
 
