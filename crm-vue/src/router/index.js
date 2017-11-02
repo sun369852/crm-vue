@@ -22,18 +22,18 @@ routes: [
     },
     {
     	path: '/index',
-    	name: "index",
+    	name:"index",
     	component:index,
     	meta: {title:"首页"},
     	children:[
     		{
-    			path:"/usermanage",
+    			path:"usermanage",
 		    	name:"usermanage",
 		    	component: usermanage,
 		    	meta:{title:"用户管理"}
     		},
     		{
-    			path:"/userfile",
+    			path:"userfile",
 		    	name:"userfile",
 		    	component: userfile,
 		    	meta:{title:"个人信息"}

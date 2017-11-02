@@ -1,15 +1,17 @@
 <template>
 	<div class="clearfix">
 		<p>Welcome {{this.$store.state.nowUser}}</p>
-		<el-dropdown style="float: left;">
+		<el-dropdown style="float: left;"  placement="top">
 			  <span class="el-dropdown-link">
 			    <img src="" class="userImg"/>
 			  </span>
-			  <el-dropdown-menu slot="dropdown"  placement="bottom">
+			  <el-dropdown-menu slot="dropdown">
 			    <el-dropdown-item>
 			    	<router-link :to="{name:'userfile'}">个人信息</router-link>
 			    </el-dropdown-item>
-			    <el-dropdown-item>退出</el-dropdown-item>
+			    <el-dropdown-item>
+			    	<router-link :to="{name: 'login'}">退出</router-link>
+			    </el-dropdown-item>
 			  </el-dropdown-menu>
 		</el-dropdown>
 		
