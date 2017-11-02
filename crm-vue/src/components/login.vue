@@ -76,6 +76,7 @@
 	  			this.haveAccount = false;
 	  			return
 	  		}
+	  		localStorage.setItem( "nowUser",this.login.username);
 	  		this.$router.replace("/index")
 	  	}
 	  }

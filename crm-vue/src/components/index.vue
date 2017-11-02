@@ -2,7 +2,7 @@
 	<el-container style="height:100%">
 		<m-aside></m-aside>
 		<el-container>
-			<el-header>
+			<el-header style="background-color: blue;">
 				<m-header></m-header>
 			</el-header>
 			<el-main>
@@ -17,6 +17,9 @@
 	import mHeader from '@/components/mHeader'
 	export default {
 	  name: 'main',
+	  created(){
+	  	this.$store.commit("changeNowUser",localStorage.getItem("nowUser"))
+	  },
 	  components: {
 	  	mAside,
 	  	mHeader
