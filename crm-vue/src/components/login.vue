@@ -38,7 +38,7 @@
 	  		checked: true,
 	  		usernameInfo:"",
 	  		passwordInfo:"",
-	  		haveAccount:true
+	  		haveAccount:false
 	  	}
 	  },
 	  created(){
@@ -48,6 +48,9 @@
 	  		if (localStorage.password) {
 	  			this.login.password=localStorage.getItem( "password");
 	  		}
+//	  		if (this.haveAccount==true) {
+//	  			
+//	  		}
 	  },
 	  methods: {
 	  	haveUser(){
@@ -57,9 +60,11 @@
 	  		}
 	  		if (this.login.username == "") {
 	  			this.usernameInfo = "请输入用户名"
+	  			return
 	  		}
-	  		if (this.login.username == "") {
+	  		if (this.login.password == "") {
 	  			this.passwordInfo = "请输入密码"
+	  			return
 	  		}
 	  		var users = this.$store.state.users;
 	  		var user = users.filter(item => {
@@ -89,12 +94,15 @@
 		height: 100%;
 	}
 	.login-wrap {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
 		width: 400px;
 		height: 400px;
 		/*border: 2px solid #000;*/
-		margin: 0 auto;
 		box-sizing: border-box;
-		padding-top: 30px;
+		/*padding-top: 30px;*/
 	}
 	.login-img {
 		width: 50px;
