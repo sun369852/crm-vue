@@ -57,9 +57,11 @@
 	  		}
 	  		if (this.login.username == "") {
 	  			this.usernameInfo = "请输入用户名"
+	  			return
 	  		}
 	  		if (this.login.username == "") {
 	  			this.passwordInfo = "请输入密码"
+	  			return
 	  		}
 	  		var users = this.$store.state.users;
 	  		var user = users.filter(item => {
@@ -77,6 +79,7 @@
 	  			return
 	  		}
 	  		localStorage.setItem( "nowUser",this.login.username);
+	  		this.$store.commit("changeNowUser",...user)
 	  		this.$router.replace("/index")
 	  	}
 	  }
@@ -87,14 +90,16 @@
 	.wrap {
 		width: 100%;
 		height: 100%;
+		position: relative;
 	}
 	.login-wrap {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
 		width: 400px;
 		height: 400px;
-		/*border: 2px solid #000;*/
-		margin: 0 auto;
 		box-sizing: border-box;
-		padding-top: 30px;
 	}
 	.login-img {
 		width: 50px;

@@ -1,6 +1,6 @@
 <template>
 	<div class="clearfix">
-		<p>Welcome {{this.$store.state.nowUser}}</p>
+		<p>Welcome {{this.$store.state.nowUser.name}}</p>
 		<el-dropdown style="float: left;"  placement="top">
 			  <span class="el-dropdown-link">
 			    <img src="" class="userImg"/>

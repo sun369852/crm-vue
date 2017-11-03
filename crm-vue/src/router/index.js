@@ -4,6 +4,7 @@ import login from '@/components/login'
 import index from '@/components/index'
 import usermanage from '@/components/usermanage'
 import userfile from '@/components/userfile'
+import indexFront from '@/components/indexFront'
 
 
 Vue.use(Router)
@@ -22,10 +23,15 @@ routes: [
     },
     {
     	path: '/index',
-    	name:"index",
     	component:index,
     	meta: {title:"首页"},
     	children:[
+    		{
+    			path:"",
+		    	name:"indexFront",
+		    	component: indexFront,
+		    	meta:{title:"首页"}
+    		},
     		{
     			path:"usermanage",
 		    	name:"usermanage",

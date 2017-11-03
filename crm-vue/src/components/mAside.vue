@@ -1,7 +1,7 @@
 <template>
-	<el-aside width="150px">
+	<el-aside width="200px" style="min-width: 200px;">
         <el-col :span="24">
-        	<router-link :to="{name:'index'}">
+        	<router-link to="/index">
         		<div class="logo"></div>
         	</router-link>
             <el-menu
