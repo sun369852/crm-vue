@@ -1,11 +1,11 @@
 <template>
 	<el-container style="height:100%">
 		<m-aside></m-aside>
-		<el-container style="min-width: 640px;">
+		<el-container>
 			<el-header style="background-color: blue;">
 				<m-header></m-header>
 			</el-header>
-			<el-main style="position: relative;">
+			<el-main>
 				<router-view></router-view>
 			</el-main>
 		</el-container>
@@ -17,6 +17,9 @@
 	import mHeader from '@/components/mHeader'
 	export default {
 	  name: 'main',
+	  created(){
+	  	this.$store.commit("changeNowUser",localStorage.getItem("nowUser"))
+	  },
 	  components: {
 	  	mAside,
 	  	mHeader
