@@ -1,12 +1,16 @@
 <template>
 	<div>
-		个人信息
 	</div>
 </template>
 
 <script>
 	export default {
-	  name: 'userfile'
+	  name: 'userfile',
+	  data(){
+	  	return {
+	  		userProfile: this.$store.state.nowUser
+	  	}
+	  }
 	}
 </script>
 
