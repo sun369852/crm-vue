@@ -79,7 +79,7 @@
 	  			return
 	  		}
 	  		localStorage.setItem( "nowUser",this.login.username);
-	  		this.$store.commit("changeNowUser",...user)
+	  		this.$store.commit("changeNowUser",user[0])
 	  		this.$router.replace("/index")
 	  	}
 	  }

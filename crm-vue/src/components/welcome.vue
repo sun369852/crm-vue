@@ -1,7 +1,7 @@
 <template>
-	<div class="clearfix">
+	<div class="clearfix" style="margin-right: 45px;">
 		<p>Welcome {{this.$store.state.nowUser.name}}</p>
-		<el-dropdown style="float: left;"  placement="top">
+		<el-dropdown style="float: left;" placement="top-end">
 			  <span class="el-dropdown-link">
 			    <img src="" class="userImg"/>
 			  </span>
@@ -14,8 +14,7 @@
 			    </el-dropdown-item>
 			  </el-dropdown-menu>
 		</el-dropdown>
-		
-	</div>
+			</div>
 </template>
 
 <script>
