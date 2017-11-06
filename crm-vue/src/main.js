@@ -12,6 +12,12 @@ Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
+Vue.directive('focus',{
+	componentUpdated:function(el){
+		el.focus();
+	}
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
