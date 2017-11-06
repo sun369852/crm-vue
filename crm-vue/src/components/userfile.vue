@@ -9,9 +9,33 @@
 			<el-button class="btn error" type="danger" icon="el-icon-error" size="mini" v-if="fileOnoff.username" @click="cancal('username')"></el-button>
 		</div>
 		<div class="infoWrap clearfix">
+			<el-button type="primary" @click="dialogVisible = true">修改密码</el-button>
+			<el-dialog 
+				title="修改密码"
+				:visible.sync="dialogVisible"
+				>
+					<el-form label-position="right">
+						<el-form-item label="原密码" :label-width="formLabelWidth">
+					      <el-input v-model="password.oldPassword" auto-complete="off" class="pass-inp"></el-input>
+					    </el-form-item>
+					    <el-form-item label="新密码" :label-width="formLabelWidth">
+					      <el-input v-model="password.newPassword" auto-complete="off" class="pass-inp"></el-input>
+					    </el-form-item>
+					    <el-form-item label="确认密码" :label-width="formLabelWidth">
+					      <el-input v-model="password.confirmPassword" auto-complete="off" class="pass-inp"></el-input>
+					    </el-form-item>
+					</el-form>
+					<div slot="footer" class="dialog-footer">
+					      <el-button type="primary" @click="dialogVisible = false">确 认</el-button>
+					      <el-button  @click="dialogVisible = false">取 消</el-button>
+					    </div>
+			</el-dialog>
+		</div>
+		<div class="infoWrap clearfix">
 			<p class="lablename">姓名：</p>
 			<div class="showText" v-text="userProfile.name"></div>
 		</div>
+		
 		<div class="infoWrap clearfix">
 			<p class="lablename">年龄：</p>
 			<div class="showText" v-text="userProfile.age"></div>
@@ -45,6 +69,7 @@
 
 <script>
 	export default {
+		//怎么做单选按钮
 	  name: 'userfile',
 	  data(){
 	  	return {
@@ -53,7 +78,14 @@
 				password: false,
 				tel:false,
 				mail:false,
-	  		}
+	  		},
+	  		dialogVisible :false,
+	  		password:{
+	  			oldPassword:"",
+	  			newPassword:"",
+	  			confirmPassword:""
+	  		},
+	  		formLabelWidth: '120px'
 	  	}
 	  },
 	  computed:{
@@ -62,6 +94,9 @@
 	  	}
 	  },
 	  methods:{
+	  	changePassword(){
+	  		
+	  	},
 	  	//编辑个人信息
 	  	rewrite(item){
 	  		this.fileOnoff[item] = !this.fileOnoff[item];
@@ -71,7 +106,12 @@
 	  	save(item){
 	  		console.log(this.userProfile[item])
 	  		if (this.userProfile[item] =="") {
-	  			alert("请输入内容")
+	  			this.$alert("请输入内容",{
+	  				title:"消息",
+	  				confirmButtonText: '确定',
+	  				customClass:'alert-wrap',
+	  				confirmButtonClass:'alert-confirm'
+	  			})
 	  			return
 	  		}
 //	  		this.userProfile[item] = this.$store.state.nowUser[item];
@@ -115,6 +155,15 @@
 		position: relative;
 		top: 4px;
 		margin: 0 10px;
+	}
+	.pass-inp {
+		width: 300px;
+	}
+	.alert-wrap {
+		width: ;
+	}
+	.alert-confirm {
+		
 	}
 	
 </style>
