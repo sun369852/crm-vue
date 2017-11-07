@@ -1,5 +1,5 @@
 <template>
-	<div class="wrap">
+	<div id="wrap">
 		<div class="infoWrap clearfix">
 			<p class="lablename">用户名：</p>
 			<el-input class="inp" style="float: left;" v-model="userProfile.username" v-if="fileOnoff.username" :autofocus="true" v-focus></el-input>
@@ -13,21 +13,26 @@
 			<el-dialog 
 				title="修改密码"
 				:visible.sync="dialogVisible"
+				width="550px"
+				:before-close="closePassDialog"
 				>
 					<el-form label-position="right">
-						<el-form-item label="原密码" :label-width="formLabelWidth">
+						<el-form-item label="原密码：" :label-width="formLabelWidth">
 					      <el-input v-model="password.oldPassword" auto-complete="off" class="pass-inp"></el-input>
+					      <div class="info" v-text="info.oldInfo"></div>
 					    </el-form-item>
-					    <el-form-item label="新密码" :label-width="formLabelWidth">
+					    <el-form-item label="新密码：" :label-width="formLabelWidth">
 					      <el-input v-model="password.newPassword" auto-complete="off" class="pass-inp"></el-input>
+					      <div class="info" v-text="info.newInfo"></div>
 					    </el-form-item>
-					    <el-form-item label="确认密码" :label-width="formLabelWidth">
+					    <el-form-item label="确认密码：" :label-width="formLabelWidth">
 					      <el-input v-model="password.confirmPassword" auto-complete="off" class="pass-inp"></el-input>
+					      <div class="info" v-text="info.confirmInfo"></div>
 					    </el-form-item>
 					</el-form>
 					<div slot="footer" class="dialog-footer">
-					      <el-button type="primary" @click="dialogVisible = false">确 认</el-button>
-					      <el-button  @click="dialogVisible = false">取 消</el-button>
+					      <el-button type="primary" @click="changePassword">确 认</el-button>
+					      <el-button  @click="closePassDialog">取 消</el-button>
 					    </div>
 			</el-dialog>
 		</div>
@@ -85,6 +90,11 @@
 	  			newPassword:"",
 	  			confirmPassword:""
 	  		},
+	  		info:{
+	  			oldInfo:"",
+	  			newInfo:"",	
+	  			confirmInfo:""
+	  		},
 	  		formLabelWidth: '120px'
 	  	}
 	  },
@@ -94,8 +104,48 @@
 	  	}
 	  },
 	  methods:{
+	  	//修改密码
 	  	changePassword(){
-	  		
+  			for (var attr in this.info) {
+	  			this.info[attr]= "";
+	  		}
+	  		if (this.password.oldPassword == "") {
+	  			this.info.oldInfo = "原密码不能为空"
+	  			return
+	  		}
+	  		if (this.password.oldPassword != this.userProfile.password) {
+	  			this.info.oldInfo = "密码错误"
+	  			return
+	  		}
+	  		if (this.password.newPassword == "") {
+	  			this.info.newInfo = "新密码不能为空"
+	  			return
+	  		}
+	  		if (this.password.oldPassword == this.password.newPassword) {
+	  			this.info.newInfo = "新密码和原密码不能相同"
+	  			return
+	  		}
+	  		if (this.password.confirmPassword == "") {
+	  			this.info.confirmInfo = "验证密码不能为空"
+	  			return
+	  		}
+	  		if (this.password.newPassword != this.password.confirmPassword) {
+	  			this.info.confirmInfo = "验证密码与新密码不一致"
+	  			return
+	  		}
+	  		this.userProfile.password = this.password.newPassword;
+	  		this.$store.commit("updateUser",this.userProfile)
+	  		this.dialogVisible = false;
+	  	},
+	  	//取消修改密码
+	  	closePassDialog(){
+	  		for (var attr in this.password) {
+	  			this.password[attr]= "";
+	  		}
+	  		for (var attr in this.info) {
+	  			this.info[attr]= "";
+	  		}
+	  		this.dialogVisible = false;
 	  	},
 	  	//编辑个人信息
 	  	rewrite(item){
@@ -128,7 +178,7 @@
 </script>
 
 <style scoped>
-	.wrap {
+	#wrap {
 		position: relative;
 		padding-top: 70px;
 	}
@@ -159,11 +209,13 @@
 	.pass-inp {
 		width: 300px;
 	}
-	.alert-wrap {
-		width: ;
+	.info {
+		position: absolute;
+		left: 5px;
+		top: 35px;
+		color: red;
 	}
-	.alert-confirm {
-		
+	.el-form-item {
+		margin-bottom: 30px;
 	}
-	
 </style>
