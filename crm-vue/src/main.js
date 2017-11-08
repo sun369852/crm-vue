@@ -13,8 +13,9 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 Vue.directive('focus',{
-	componentUpdated:function(el){
-		el.focus();
+	inserted:function(el){
+		console.log(el)
+		el.querySelector("input").focus();
 	}
 })
 

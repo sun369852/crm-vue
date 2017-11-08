@@ -2,7 +2,7 @@
 	<div id="wrap">
 		<div class="infoWrap clearfix">
 			<p class="lablename">用户名：</p>
-			<el-input class="inp" style="float: left;" v-model="userProfile.username" v-if="fileOnoff.username" :autofocus="true" v-focus></el-input>
+			<el-input class="inp" style="float: left;" v-model="userProfile.username" v-if="fileOnoff.username" :autofocus="fileOnoff.username" v-focus></el-input>
 			<div class="showText" v-text="userProfile.username" v-if="!fileOnoff.username"></div>
 			<el-button class="btn rewrite" type="primary" icon="el-icon-edit" size="mini" v-if="!fileOnoff.username" @click="rewrite('username')"></el-button>
 			<el-button class="btn save"  type="success" icon="el-icon-success" size="mini" v-if="fileOnoff.username" @click="save('username')"></el-button>
@@ -47,7 +47,7 @@
 		</div>
 		<div class="infoWrap clearfix">
 			<p class="lablename">手机：</p>
-			<el-input class="inp" style="float: left;" v-model="userProfile.tel" v-if="fileOnoff.tel" :autofocus="true" v-focus></el-input>
+			<el-input class="inp" style="float: left;" v-model="userProfile.tel" v-if="fileOnoff.tel" :autofocus="fileOnoff.tel"></el-input>
 			<div class="showText" v-text="userProfile.tel" v-if="!fileOnoff.tel"></div>
 			<el-button class="btn rewrite" type="primary" icon="el-icon-edit" size="mini" v-if="!fileOnoff.tel" @click="rewrite('tel')"></el-button>
 			<el-button class="btn save"  type="success" icon="el-icon-success" size="mini" v-if="fileOnoff.tel" @click="save('tel')"></el-button>
@@ -55,7 +55,7 @@
 		</div>
 		<div class="infoWrap clearfix">
 			<p class="lablename">邮箱：</p>
-			<el-input class="inp" style="float: left;" v-model="userProfile.mail" v-if="fileOnoff.mail" :autofocus="true" v-focus></el-input>
+			<el-input class="inp" style="float: left;" v-model="userProfile.mail" v-if="fileOnoff.mail" :autofocus="fileOnoff.mail"></el-input>
 			<div class="showText" v-text="userProfile.mail" v-if="!fileOnoff.mail"></div>
 			<el-button class="btn rewrite" type="primary" icon="el-icon-edit" size="mini" v-if="!fileOnoff.mail" @click="rewrite('mail')"></el-button>
 			<el-button class="btn save"  type="success" icon="el-icon-success" size="mini" v-if="fileOnoff.mail" @click="save('mail')"></el-button>

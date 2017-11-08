@@ -12,6 +12,7 @@ export default new Vuex.Store({
 				username: "aaa",
 				password: "bbb",
 				name:"翠花",
+				birth:"1991-03-04",
 				age:"19",
 				tel:"130101010101",
 				mail:"123456789@qq.com",
