@@ -12,6 +12,7 @@ export default new Vuex.Store({
 				username: "aaa",
 				password: "bbb",
 				name:"翠花",
+				sex:"女",
 				birth:"1991-03-04",
 				age:"19",
 				tel:"130101010101",
@@ -27,6 +28,7 @@ export default new Vuex.Store({
 				username: "aaa",
 				password: "bbb",
 				name:"翠花",
+				sex:"女",
 				age:"19",
 				tel:"130101010101",
 				mail:"123456789@qq.com",
@@ -79,6 +81,9 @@ export default new Vuex.Store({
 			for (var attr in state.nowUser) {
 				state.nowUser[attr] = user[attr];
 			}
+		},
+		addNewUser(state,user){
+			state.users.push(user)
 		}
 	},
 	
