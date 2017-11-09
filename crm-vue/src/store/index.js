@@ -9,8 +9,8 @@ export default new Vuex.Store({
 	state: {
 		users:[
 			{
-				username: "aaa",
-				password: "bbb",
+				username: "user1",
+				password: "admin",
 				name:"翠花",
 				sex:"女",
 				birth:"1991-03-04",
@@ -19,6 +19,21 @@ export default new Vuex.Store({
 				mail:"123456789@qq.com",
 				position:"职员",
 				manager: "大汉",
+				projects:[
+					"项目一","项目二","项目三","项目四","项目五"					
+				]
+			},
+			{
+				username: "user2",
+				password: "admin",
+				name:"傻子",
+				sex:"男",
+				birth:"1991-05-09",
+				age:"20",
+				tel:"13383838581",
+				mail:"avasdfge@qq.com",
+				position:"主管",
+				manager: "疯子",
 				projects:[
 					"项目一","项目二","项目三","项目四","项目五"					
 				]

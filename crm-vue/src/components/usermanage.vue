@@ -52,7 +52,6 @@
 			<el-table-column
 				type="selection"
 		     	width="55px"
-		     	align="center"
 		      ></el-table-column>
 		      <el-table-column
 		      	prop="name"
@@ -90,6 +89,21 @@
 		      	label="邮箱"
 		      	align="center"
 		      	></el-table-column>
+		      <el-table-column
+		      	label="操作"
+		      	align="center"
+		      	>
+		      	<template slot-scope="props">
+		      		<el-button
+			          size="mini"
+			          >编辑</el-button>
+			        <el-button
+			          size="mini"
+			          type="danger"
+			          @click="delUser(props.$index, props.row)"
+			          >删除</el-button>
+		      	</template>
+		      </el-table-column>
 		      <!--<el-table-column
 		      	prop="position"
 		      	label="职位"
@@ -188,6 +202,9 @@
 	  		this.newUser.sex == "male"?this.newUser.sex = "男":this.newUser.sex = "女"
 	  		this.$store.commit("addNewUser",JSON.parse( JSON.stringify(this.newUser) ))
 	  		this.addDialog = false
+	  	},
+	  	delUser(index,row){
+	  		row.age = "33"
 	  	}
 	  }
 	}
