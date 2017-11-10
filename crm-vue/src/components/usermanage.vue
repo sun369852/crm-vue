@@ -16,6 +16,7 @@
 		<el-table
 			:data="this.$store.state.users"
 			style="width: 100%"
+			:default-sort = "{prop: 'tel', order: 'descending'}"
 			>
 			<el-table-column
 				type="expand"
@@ -81,6 +82,7 @@
 		      	></el-table-column>-->
 		      <el-table-column
 		      	prop="tel"
+		      	sortable
 		      	label="电话"
 		      	align="center"
 		      	></el-table-column>
@@ -96,11 +98,12 @@
 		      	<template slot-scope="props">
 		      		<el-button
 			          size="mini"
+			          @click="editUser(props.row)"
 			          >编辑</el-button>
 			        <el-button
 			          size="mini"
 			          type="danger"
-			          @click="delUser(props.$index, props.row)"
+			          @click="delUser(props.row)"
 			          >删除</el-button>
 		      	</template>
 		      </el-table-column>
@@ -115,6 +118,7 @@
 		      	align="center"
 		      	></el-table-column>-->
 		</el-table>
+		<!--新增用户-->
 		<el-dialog
 		  title="新增用户"
 		  :visible.sync="addDialog"
@@ -160,6 +164,9 @@
 		    <el-button @click="addDialog = false">取 消</el-button>
 		  </span>
 		</el-dialog>
+		<el-dialog
+			
+			></el-dialog>
 	</div>
 </template>
 
@@ -170,7 +177,8 @@
 	  	return {
 	  		addDialog:false,
 	  		newUser: {
-	  			username: "this.$store.state.users.length + 1",
+	  			id: this.$store.state.maxId + 1,
+	  			username: this.$store.state.users.length + 1,
 	  			password: "admin",
 	  			birth:"",
 	  			name:"",
@@ -180,6 +188,7 @@
 	  			mail:"",
 	  			manager:""
 	  		},
+//	  		editUser:{},
 	  		positionList:["助理","专员","主管","高级主管","经理","高级经理","总监","总经理"]
 	  	}
 	  },
@@ -201,10 +210,21 @@
 	  	confirmAdduser(){
 	  		this.newUser.sex == "male"?this.newUser.sex = "男":this.newUser.sex = "女"
 	  		this.$store.commit("addNewUser",JSON.parse( JSON.stringify(this.newUser) ))
+	  		this.$store.commit("maxIdAdd")
 	  		this.addDialog = false
 	  	},
-	  	delUser(index,row){
-	  		row.age = "33"
+	  	delUser(row){
+	  		let delIndex = -1;	
+	  		this.$store.state.users.forEach((item,index) =>{
+	  			if (row.id == item.id) {
+	  				delIndex = index;
+	  			}
+	  		})
+	  		this.$store.commit("delClickUser",delIndex)
+	  	},
+	  	editUser(row){
+	  		row.username = "hahaha";
+	  		console.log(row)
 	  	}
 	  }
 	}

@@ -57,10 +57,12 @@
 	  		}
 	  		if (this.login.username == "") {
 	  			this.usernameInfo = "请输入用户名"
+	  			this.passwordInfo = ""
 	  			return
 	  		}
-	  		if (this.login.username == "") {
+	  		if (this.login.password == "") {
 	  			this.passwordInfo = "请输入密码"
+	  			this.usernameInfo= ""
 	  			return
 	  		}
 	  		var users = this.$store.state.users;

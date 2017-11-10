@@ -7,8 +7,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
+		maxId:2,
 		users:[
 			{
+				id:1,
 				username: "user1",
 				password: "admin",
 				name:"翠花",
@@ -24,6 +26,7 @@ export default new Vuex.Store({
 				]
 			},
 			{
+				id:2,
 				username: "user2",
 				password: "admin",
 				name:"傻子",
@@ -40,10 +43,12 @@ export default new Vuex.Store({
 			}
 		],
 		nowUser: {
-				username: "aaa",
-				password: "bbb",
+				id:1,
+				username: "user1",
+				password: "admin",
 				name:"翠花",
 				sex:"女",
+				birth:"1991-03-04",
 				age:"19",
 				tel:"130101010101",
 				mail:"123456789@qq.com",
@@ -99,6 +104,12 @@ export default new Vuex.Store({
 		},
 		addNewUser(state,user){
 			state.users.push(user)
+		},
+		maxIdAdd(state){
+			state.maxId +=1;
+		},
+		delClickUser(state,index){
+			state.users.splice(index,1)
 		}
 	},
 	
